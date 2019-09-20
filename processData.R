@@ -18,8 +18,10 @@ gCSI_GR_AOC <- read.csv(file.path(prefix,"gCSI2018_data/gCSI_GRvalues_v1.2.tsv")
 ## arent familiar with syntax (it implements inplace modifications), please 
 ## read up on it.
 gCSI_GR_AOC <- data.table(gCSI_GR_AOC)
+gCSI_GR_AOC[,cellid := CellLineName]
+gCSI_GR_AOC[,drugid := DrugName]
 
-gCSI_GR_AOC[,expid := paste(CellLineName, DrugName, ExperimentNumber,sep="_")]
+gCSI_GR_AOC[,expid := paste(cellid, drugid, ExperimentNumber,sep="_")]
 max_conc <- max(gCSI_GR_AOC[,.N, expid][,N])
 uids <- unique(gCSI_GR_AOC$expid)
 
@@ -47,7 +49,7 @@ raw.sensitivity <- array(c(as.matrix(doses_final), as.matrix(viability_final)),
                              dimnames=list(rownames(doses_final),
                                            colnames(doses_final),
                                            c("Dose", "Viability")))
-sensitivityInfo_2018 <- as.data.frame(gCSI_GR_AOC[,c("expid", "DrugName","CellLineName","ExperimentNumber","TrtDuration","doublingtime")])
+sensitivityInfo_2018 <- as.data.frame(gCSI_GR_AOC[,c("expid", "cellid","drugid","ExperimentNumber","TrtDuration","doublingtime")])
 sensitivityInfo_2018 <- unique(sensitivityInfo_2018)
 rownames(sensitivityInfo_2018) <- sensitivityInfo_2018$expid
 
