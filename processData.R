@@ -53,7 +53,7 @@ rownames(sensitivityInfo_2018) <- sensitivityInfo_2018$expid
 
 ## Read in published data.
 
-gCSI_GR_AOC_Pub <- read.csv("2018/raw_data/gCSI_GRmetrics_v1.2.tsv", sep="\t")
+gCSI_GR_AOC_Pub <- read.csv(file.path(prefix,"gCSI_GRmetrics_v1.2.tsv"), sep="\t")
 
 
 
