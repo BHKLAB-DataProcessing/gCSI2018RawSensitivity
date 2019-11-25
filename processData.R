@@ -12,7 +12,7 @@ library(data.table)
 prefix <- "/pfs/"
 
 options(stringsAsFactors = FALSE)
-gCSI_GR_AOC <- read.csv(file.path(prefix,"gCSI2018_data/gCSI_GRvalues_v1.2.tsv"), sep="\t")
+gCSI_GR_AOC <- read.csv(file.path(prefix,"gCSI2018_data/gCSI_GRvalues_v1.3.tsv"), sep="\t")
 
 ## Using data.table for efficency and consistency with other psets. If you 
 ## arent familiar with syntax (it implements inplace modifications), please 
@@ -55,7 +55,7 @@ rownames(sensitivityInfo_2018) <- sensitivityInfo_2018$expid
 
 ## Read in published data.
 
-gCSI_GR_AOC_Pub <- read.csv(file.path(prefix,"gCSI2018_data/gCSI_GRmetrics_v1.2.tsv"), sep="\t")
+gCSI_GR_AOC_Pub <- read.csv(file.path(prefix,"gCSI2018_data/gCSI_GRmetrics_v1.3.tsv"), sep="\t")
 
 
 
