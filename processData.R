@@ -44,11 +44,14 @@ for (exp in names(gCSI_GR_AOC_list)) {
 }
 
 
-raw.sensitivity <- array(c(as.matrix(doses_final), as.matrix(viability_final)),
+raw.sensitivity <- array(c(as.matrix(as.numeric(doses_final)), as.matrix(as.numeric(viability_final))),
                              c(length(uids), max_conc, 2),
                              dimnames=list(rownames(doses_final),
                                            colnames(doses_final),
                                            c("Dose", "Viability")))
+
+
+
 sensitivityInfo_2018 <- as.data.frame(gCSI_GR_AOC[,c("expid", "cellid","drugid","ExperimentNumber","TrtDuration","doublingtime")])
 sensitivityInfo_2018 <- unique(sensitivityInfo_2018)
 rownames(sensitivityInfo_2018) <- sensitivityInfo_2018$expid
